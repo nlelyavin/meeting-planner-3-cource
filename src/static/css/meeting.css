@@ -1,0 +1,219 @@
+.main {
+    width: 100%;
+    padding: 0 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 60px;
+}
+.main .main__top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.main .chat {
+    position: relative;
+}
+.main .chat .chat__field {
+    width: 350px;
+    height: 350px;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: #1e2761;
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #1e2761;
+    opacity: 0;
+    visibility: hidden;
+}
+.main .chat .chat__field .messages {
+    overflow: auto;
+}
+.main .chat .chat__field .messages::-webkit-scrollbar {
+    width: 0;
+}
+.main .chat .chat__field .message {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.main .chat .chat__field .message span:first-child {
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 8px;
+}
+.main .chat .chat__field .message span:last-child {
+    font-size: 15px;
+    font-weight: 400;
+    color: #eee;
+    margin-left: 10px;
+}
+.main .chat .chat__field .message:last-child {
+    margin-bottom: 5px;
+}
+.main .chat .chat__field .send__message {
+    border-radius: 0 0 20px 20px;
+    width: 100%;
+    display: flex;
+    height: 35px;
+    margin-top: 10px;
+}
+.main .chat .chat__field .send__message input {
+    height: 100%;
+    width: calc(100% - 40px);
+    border-radius: 10px;
+    padding-left: 10px;
+    margin-right: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+}
+.main .chat .chat__field .send__message button {
+    height: 100%;
+    width: 35px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+.main .chat .chat__field:target {
+    opacity: 1;
+    visibility: visible;
+}
+.main .chat .chat__field .exit {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 300;
+    background-color: rgba(0, 0, 0, 0);
+    background-color: #1e2761;
+}
+.main button, main a {
+    width: calc((100vw - 100px) / 7 - 7px);
+    background-color: #408ec6;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: "Inter", serif;
+}
+.main button:hover {
+    background-color: #1e2761;
+    transform: none;
+}
+.main .schedule__btn {
+    display: flex;
+}
+.main .schedule__btn a {
+    width: calc((100vw - 100px) / 7 - 7px);
+    background-color: #408ec6;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: "Inter", serif;
+    margin-left: 10px;
+}
+.main .schedule__btn a:hover {
+    background-color: #1e2761;
+    transform: none;
+}
+.main .schedule {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% + 7px);
+    transform: translateX(-3.5px);
+    margin-top: 20px;
+}
+.main .schedule .weekday {
+    width: calc(14.2857142857% - 7px);
+    border: 3px solid #1e2761;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin: 0 3.5px;
+    height: 100%;
+}
+.main .schedule .weekday h3 {
+    font-weight: 500;
+    font-size: 21px;
+}
+
+.main .schedule .weekday .schedule__line__field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.main .schedule .weekday .schedule__line__field:first-child {
+    margin-top: 20px;
+}
+
+.main .schedule .weekday .timeline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px;
+}
+.main .schedule .weekday .timeline input {
+    border: 1px solid #1e2761;
+    border-radius: 5px;
+}
+.main .schedule .weekday .timeline button {
+    width: 16px;
+    background-color: white;
+    color: black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.main .schedule .weekday .timeline button:hover {
+    background-color: #7a2048;
+    color: white;
+}
+.main .schedule .weekday button {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #408ec6;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: "Inter", serif;
+}
+.main .schedule .weekday button:hover {
+    background-color: #1e2761;
+    transform: none;
+}

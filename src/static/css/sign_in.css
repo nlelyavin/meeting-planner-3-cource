@@ -1,0 +1,87 @@
+.main {
+    width: 100%;
+    padding: 30px 50px 0 50px;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+.main .sign__in__card {
+    border: 3px solid #1e2761;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+}
+.main .sign__in__card h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 30px;
+}
+.main .sign__in__card input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+    font-size: 18px;
+}
+.main .sign__in__card input:first-child {
+    margin-top: 0;
+}
+.main .sign__in__card .save {
+    display: flex;
+    align-items: end;
+    margin-top: 20px;
+}
+.main .sign__in__card .save input {
+    width: auto;
+}
+.main .sign__in__card .save span {
+    margin-left: 7px;
+}
+.main .sign__in__card .error {
+    color: red;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main .sign__in__card .error span {
+    display: inline-block;
+    margin-top: 10px;
+}
+.main .sign__in__card .error span:first-child {
+    margin-top: 30px;
+}
+.main .sign__in__card .sign__in__btn {
+    display: flex;
+    width: 100%;
+    margin-top: 30px;
+}
+.main .sign__in__card .sign__in__btn a, .main .sign__in__card .sign__in__btn button {
+    background-color: #408ec6;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+    font-size: 20px;
+}
+.main .sign__in__card .sign__in__btn a:hover, .main .sign__in__card .sign__in__btn button:hover {
+    background-color: #1e2761;
+    transform: none;
+}
+.main .sign__in__card .sign__in__btn button {
+    margin-left: 10px;
+}
+.main .sign__in__card .sign__in__btn .sign__up__btn {
+    width: 100%;
+}
+.main .sign__in__card .sign__in__btn .sign__up__btn button {
+    width: 100%;
+    margin: 0;
+}

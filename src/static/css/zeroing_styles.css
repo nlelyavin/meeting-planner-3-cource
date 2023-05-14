@@ -1,0 +1,35 @@
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, body {
+    margin: 0;
+    padding: 0;
+}
+
+body, a {
+    font-family: "Inter", serif;
+    font-weight: 400;
+    text-decoration: none;
+    color: #000;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+a {
+    color: #fff;
+    display: inline-block;
+    transition: all 0.1s ease;
+}
+a:hover {
+    color: #c7cbcc;
+}
+
+button {
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}

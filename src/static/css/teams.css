@@ -1,0 +1,238 @@
+.main {
+    width: 100%;
+    padding: 0 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 60px;
+}
+.main .main__top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.main .main__top .add__team {
+    width: 30%;
+}
+.main .main__top .add__team a {
+    background-color: #408ec6;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+.main .main__top .add__team a:hover {
+    background-color: #1e2761;
+    transform: none;
+}
+.main .main__top h3 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 30px;
+}
+.main .main__top .search {
+    width: 30%;
+    display: flex;
+    justify-content: end;
+}
+.main .main__top .search input {
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    margin-right: 15px;
+    width: 50%;
+}
+.main .main__top .search button {
+    background-color: #408ec6;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    height: 100%;
+}
+.main .main__top .search button:hover {
+    background-color: #1e2761;
+}
+.main .teams {
+    margin-top: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% + 20px);
+    transform: translateX(-10px);
+}
+.main .teams .team {
+    border: 3px solid #1e2761;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    width: calc(50% - 20px);
+    margin: 0 10px 20px 10px;
+}
+.main .teams .team .team__inf {
+    display: flex;
+    flex-direction: column;
+}
+.main .teams .team .team__inf h3 {
+    font-weight: 500;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.main .teams .team .team__inf span {
+    margin-bottom: 7px;
+}
+.main .teams .team .team__inf span:last-child {
+    margin-bottom: 0;
+}
+.main .teams .team .rename {
+    margin-top: 15px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.main .teams .team .rename input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+    margin-right: 7px;
+    width: 200px;
+    height: 100%;
+}
+.main .teams .team .rename button {
+    height: 40px;
+    width: 40px;
+    background-color: #408ec6;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+.main .teams .team .rename button:hover {
+    background-color: #1e2761;
+}
+.main .teams .team .team__btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+.main .teams .team .team__btn a, .main .teams .team .team__btn button {
+    background-color: #408ec6;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.main .teams .team .team__btn a:hover, .main .teams .team .team__btn button:hover {
+    background-color: #1e2761;
+    transform: none;
+}
+.main .teams .team .team__btn .leave {
+    background-color: #7a2048;
+}
+.main .popup__add__team {
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 300;
+}
+.main .popup__add__team:target {
+    opacity: 1;
+    visibility: visible;
+}
+.main .popup__add__team .popup__add__team__window {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #1e2761;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.main .popup__add__team .popup__add__team__window .exit {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: white;
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1e2761;
+    font-weight: 300;
+}
+.main .popup__add__team .popup__add__team__window h3 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+}
+.main .popup__add__team .popup__add__team__window .add__team__blocks {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.main .popup__add__team .popup__add__team__window .add__team__blocks .add__team__block {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 250px;
+}
+.main .popup__add__team .popup__add__team__window .add__team__blocks .add__team__block:first-child {
+    margin-right: 20px;
+}
+.main .popup__add__team .popup__add__team__window .add__team__blocks .add__team__block input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+}
+.main .popup__add__team .popup__add__team__window .add__team__blocks .add__team__block input:first-child {
+    margin-top: 0;
+}
+.main .popup__add__team .popup__add__team__window .add__team__blocks .add__team__block button {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #408ec6;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.main .popup__add__team .popup__add__team__window .add__team__blocks .add__team__block button:hover {
+    background-color: #1e2761;
+    transform: none;
+}
