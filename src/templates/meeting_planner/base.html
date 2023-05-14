@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% block head %}
+    {% endblock head %}
+
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <link href="{% static 'css/zeroing_styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/header_style.css' %}" rel="stylesheet">
+</head>
+
+<header class="header" id="header">
+    <a href="{% url 'main' %}" class="logo">Meeting Planner</a>
+    <nav class="nav">
+        <a href="{% url 'teams' %}">Мои команды</a>
+        <a href="{% url 'profile' %}">Профиль</a>
+    </nav>
+</header>
+
+<body>
+<main class="main">
+    <div class="content">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <footer class="footer">
+        INFO
+    </footer>
+</main>
+</body>
+
+</html>
