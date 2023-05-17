@@ -1,0 +1,30 @@
+{% extends 'meeting_planner/base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link href="{% static 'css/profile.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block title %}Встречи{% endblock %}
+
+
+{% block content %}
+    <div class="profile__card">
+        <div class="profile__nick">
+            <span>{user.getUserNickname()}</span>
+        </div>
+        <div class="profile__img">
+            <img src="{% static '/img/avatar.jpg' %}" alt="">
+        </div>
+        <div class="profile__name">
+            <span>{user.getName()}</span>
+        </div>
+        <div class="profile__email">
+            <span>{user.getUsername()}</span>
+        </div>
+        <form action="/logout" target="_blank">
+            <button>Выйти</button>
+        </form>
+    </div>
+{% endblock content %}

@@ -15,10 +15,11 @@
 
     <link href="{% static 'css/zeroing_styles.css' %}" rel="stylesheet">
     <link href="{% static 'css/header_style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
 </head>
 
 <header class="header" id="header">
-    <a href="{% url 'main' %}" class="logo">Meeting Planner</a>
+    <a href="{% url 'profile' %}" class="logo">Meeting Planner</a>
     <nav class="nav">
         <a href="{% url 'teams' %}">Мои команды</a>
         <a href="{% url 'profile' %}">Профиль</a>

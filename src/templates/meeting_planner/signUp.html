@@ -1,0 +1,28 @@
+{% extends 'meeting_planner/base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link href="{% static 'css/sign_in.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block title %}Регистрация{% endblock %}
+
+
+{% block content %}
+    <form action="/signUp" method="post" class="sign__in__card">
+        <h3>Регистрация</h3>
+
+        <input type="text" placeholder="Имя" name="firstName">
+        <input type="text" placeholder="Фамилия" name="lastName">
+        <input type="text" placeholder="Имя пользователя" name="userName">
+        <input type="email" placeholder="Почта" name="email">
+        <input type="password" placeholder="Пароль" name="password">
+
+        <div class="sign__in__btn">
+            <div class="sign__up__btn">
+                <button type="submit">Регистрация</button>
+            </div>
+        </div>
+    </form>
+{% endblock content %}

@@ -1,25 +1,29 @@
 from django.urls import path, include
 
-from . import views
+from meeting_planner.views import ProfileView, index, LoginView
 
 urlpatterns = [
-    path('', views.index, name="main"),
+    # Default
+    path('', ProfileView.as_view(), name="profile"),
+
+    # Auth
+    path('login', LoginView.as_view(), name='login'),
 
     # Teams
     path('teams/', include([
-        path('', views.index, name='teams'),
-        path('team', views.index, name='team'),
-        path('<int:id>', views.index, name='team_by_id'),
-        path('<int:id>/changeMeetingName', views.index, name='change_meeting_name'),
+        path('', index, name='teams'),
+        path('team', index, name='team'),
+        path('<int:id>', index, name='team_by_id'),
+        path('<int:id>/changeMeetingName', index, name='change_meeting_name'),
     ])),
 
     # Profile
-    path('profile/', views.index, name='profile'),
+    path('profile/', ProfileView.as_view(), name='profile'),
 
     # Meetings
     path('meeting', include([
-        path('<int:id>', views.index, name='meeting_by_id'),
-        path('delete/${meeting.id}', views.index, name='meeting_delete')
+        path('<int:id>', index, name='meeting_by_id'),
+        path('delete/${meeting.id}', index, name='meeting_delete')
     ])),
 
 ]
