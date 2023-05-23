@@ -29,32 +29,29 @@
 
 
     <div class="teams">
-        {% if meetings %}
-            {% for meeting in meetings %}
-                <div class="team">
-                    <div>
-                        <div class="team__inf">
-                            <h3>${meeting.name}</h3>
-                        </div>
-
-                        <form class="rename" method="post" action="{% url 'change_meeting_name' %}">
-                            <label>
-                                <input type="hidden" name="id" value="${meeting.id}">
-                                <input type="text" name="name" placeholder="Переименовать">
-                            </label>
-                            <button type="submit">✓</button>
-                        </form>
+        {% for meeting in meetings %}
+            <div class="team">
+                <div>
+                    <div class="team__inf">
+                        <h3>${meeting.name}</h3>
                     </div>
 
-                    <div class="team__btn">
-                        <a role="button" class="enter" href="{% url  'meeting_by_id' %}">Перейти</a>
-                        <form method="post" action="{% url 'delete_meeting' %}">
-                            <input type="hidden" name="teamId" value="${team.id}">
-                            <button type="submit" class="leave">Удалить</button>
-                        </form>
-                    </div>
+                    <form class="rename" method="post" action="{% url 'change_meeting_name' meeting.id %}">
+                        <label>
+                            <input type="hidden" name="id" value="${meeting.id}">
+                            <input type="text" name="name" placeholder="Переименовать">
+                        </label>
+                        <button type="submit">✓</button>
+                    </form>
                 </div>
-            {% endfor %}
-        {% endif %}
+
+                <div class="team__btn">
+                    <a role="button" class="enter" href="{% url 'meeting_by_id' meeting.id %}">Перейти</a>
+                    <form method="post" action="{% url 'meeting_delete' meeting.id %}">
+                        <button type="submit" class="leave">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock content %}

@@ -12,16 +12,18 @@
 {% block content %}
     <div class="profile__card">
         <div class="profile__nick">
-            <span>{user.getUserNickname()}</span>
+            <span>{{ user.username }}</span>
         </div>
         <div class="profile__img">
             <img src="{% static '/img/avatar.jpg' %}" alt="">
         </div>
+        {% if user.age %}
         <div class="profile__name">
-            <span>{user.getName()}</span>
+            <span>Ваш возраст - {{ user.age }}</span>
         </div>
+        {% endif %}
         <div class="profile__email">
-            <span>{user.getUsername()}</span>
+            <span>{{ user.email }}</span>
         </div>
         <form action="/logout" target="_blank">
             <button>Выйти</button>

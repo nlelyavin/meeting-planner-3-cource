@@ -1,0 +1,74 @@
+{% extends 'meeting_planner/base.html' %}
+
+{% load static %}
+
+
+{% block head %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="{% static 'css/teams.css' %}" rel="stylesheet">
+{% endblock head %}
+
+
+{% block title %}Команды{% endblock %}
+
+
+{% block content %}
+    <div class="add__team">
+        <a href="#popup">Добавить команду</a>
+    </div>
+
+    <h3>Команды</h3>
+    <form class="search">
+        <input placeholder="Название команды" type="search" aria-label="Поиск">
+        <button type="submit">Поиск</button>
+    </form>
+
+    <div id="popup" class="popup__add__team">
+        <div class="popup__add__team__window">
+            <h3>Добавить команду</h3>
+            <div class="add__team__blocks">
+                <form class="add__team__block" method="post" action="<@spring.url '/teams/enter'/>">
+                    <input placeholder="Название" name="name" type="text">
+                    <input placeholder="Пароль" name="password" type="password">
+                    <button type="submit">Войти</button>
+                </form>
+                <form class="add__team__block" method="post" action="<@spring.url '/teams/create'/>">
+                    <input placeholder="Название" name="name" type="text">
+                    <input placeholder="Пароль" name="password" type="password">
+                    <button type="submit">Создать</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="teams">
+        {% for team in teams %}
+            <div class="team">
+                <div>
+                    <div class="team__inf">
+                        <h3>{{ team.name }}</h3>
+                        <span>Админ: {{ team.team_creator }}</span>
+                        <span>Пароль: {{ team.password }}</span>
+                    </div>
+                </div>
+
+                <div class="team__btn">
+                    <a role="button" class="enter" href="{% url 'team_by_id' team.id %}">Перейти</a>
+                    {% if team.team_creator != user %}
+                        <form method="post" action="<@spring.url '/teams/leave/${team.id}'/>">
+                            <button type="submit" class="leave">Выйти</button>
+                        </form>
+                    {% else %}
+                        <form method="post" action="<@spring.url '/teams/delete/${team.id}'/>">
+                            <button type="submit" class="leave">Удалить</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

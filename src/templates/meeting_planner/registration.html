@@ -10,19 +10,20 @@
 
 
 {% block content %}
-    <form action="/signUp" method="post" class="sign__in__card">
+    <form action="{% url 'registration' %}" method="post" class="sign__in__card">
+        {% csrf_token %}
         <h3>Регистрация</h3>
 
-        <input type="text" placeholder="Имя" name="firstName">
-        <input type="text" placeholder="Фамилия" name="lastName">
-        <input type="text" placeholder="Имя пользователя" name="userName">
-        <input type="email" placeholder="Почта" name="email">
-        <input type="password" placeholder="Пароль" name="password">
+        {% if form.errors %}
+        {% endif %}
+
+        {{ form.as_p }}
 
         <div class="sign__in__btn">
             <div class="sign__up__btn">
                 <button type="submit">Регистрация</button>
             </div>
         </div>
+
     </form>
 {% endblock content %}

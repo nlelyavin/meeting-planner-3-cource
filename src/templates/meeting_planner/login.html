@@ -9,14 +9,16 @@
 {% block title %}Вход{% endblock title %}
 
 {% block content %}
+    <h3>Вход</h3>
+
     <form action="{% url 'login' %}" method="post" class="sign__in__card">
-        <h3>Вход</h3>
+        {% csrf_token %}
         <ul>
             {% for field in form %}
                 <li class="df-ai-bl-fd-c">{{ field.name }} {{ field }}</li>
             {% endfor %}
-                <button class="button" type="submit">Войти</button>
-
+            <button class="button" type="submit">Войти</button>
         </ul>
     </form>
+
 {% endblock content %}
