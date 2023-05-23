@@ -7,5 +7,6 @@ from .views_profile import (
 )
 
 from .views_teams import (
-    TeamsView
+    TeamsView,
+    TeamView,
 )

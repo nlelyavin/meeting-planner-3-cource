@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.db.models import CharField, ForeignKey, ManyToManyField
+from django.db.models import CharField, ForeignKey
 
 
 class CustomUser(AbstractUser):
@@ -25,3 +25,7 @@ class TeamToUser(models.Model):
                       related_name='to_user')
     team = ForeignKey(Team, on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Команда',
                       related_name='to_team')
+
+
+class Meeting(models.Model):
+    name = CharField(max_length=50, verbose_name='Название Встречи')

@@ -11,20 +11,7 @@
 
 {% block content %}
     <div class="main__top">
-        <div class="add__team">
-            <form method="post" action="{% url 'team' %} " class="search"
-                  style="justify-content: start">
-                <input type="text" placeholder="Название встречи" name="name" aria-label="Название встречи"
-                       style="width: 200px">
-                <button type="submit">Создать</button>
-            </form>
-
-        </div>
-        <h3>Встречи</h3>
-        <form class="search">
-            <input placeholder="Название встречи" type="search" aria-label="Поиск">
-            <button type="submit">Поиск</button>
-        </form>
+        <h3>Встречи команды "{{ team.name }}"</h3>
     </div>
 
 
@@ -53,5 +40,8 @@
                 </div>
             </div>
         {% endfor %}
+        {% if not meetings %}
+            <h4>У данной команды нет запланированных встреч</h4>
+        {% endif %}
     </div>
 {% endblock content %}

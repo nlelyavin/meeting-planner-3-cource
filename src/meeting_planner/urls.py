@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from meeting_planner.views import ProfileView, index, LoginView, RegistrationView, logout_view, TeamsView
+from meeting_planner.views import ProfileView, index, LoginView, RegistrationView, logout_view, TeamsView, TeamView
 
 urlpatterns = [
 
@@ -13,8 +13,7 @@ urlpatterns = [
     # Teams
     path('teams/', include([
         path('', TeamsView.as_view(), name='teams'),
-        path('team', index, name='team'),
-        path('<int:id>', index, name='team_by_id'),
+        path('<int:pk>', TeamView.as_view(), name='team_by_id'),
     ])),
 
     # Profile
