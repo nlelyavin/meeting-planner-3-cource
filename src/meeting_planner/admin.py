@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from meeting_planner.models import Team, CustomUser, TeamToUser
+from meeting_planner.models import Team, CustomUser, TeamToUser, Meeting
 
 
 class TeamToUserInline(admin.TabularInline):
@@ -17,4 +17,8 @@ class TeamAdmin(admin.ModelAdmin):
 @admin.register(CustomUser)
 class TeamAdmin(admin.ModelAdmin):
     list_display = ['username']
-    # inlines = [TeamUserInline]
+
+
+@admin.register(Meeting)
+class MeetingAdmin(admin.ModelAdmin):
+    list_display = ['name', 'team']

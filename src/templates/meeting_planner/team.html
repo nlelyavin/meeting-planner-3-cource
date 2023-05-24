@@ -20,12 +20,12 @@
             <div class="team">
                 <div>
                     <div class="team__inf">
-                        <h3>${meeting.name}</h3>
+                        <h3>{{ meeting.name }}</h3>
                     </div>
 
                     <form class="rename" method="post" action="{% url 'change_meeting_name' meeting.id %}">
                         <label>
-                            <input type="hidden" name="id" value="${meeting.id}">
+                            <input type="hidden" name="id" value="{{ meeting.id }}">
                             <input type="text" name="name" placeholder="Переименовать">
                         </label>
                         <button type="submit">✓</button>

@@ -1,0 +1,73 @@
+{% extends 'meeting_planner/base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link href="{% static 'css/meeting.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block title %}{{ meeting.name }}{% endblock %}
+
+{% block content %}
+
+    <div class="chat">
+        <a href="#popup__chat" id="open-chat">Открыть чат</a>
+        <div id="popup__chat" class="chat__field">
+            <a href="#header" class="exit">×</a>
+            <div class="messages" id="messages">
+                <{% for message in messages %}>
+                <div class="message">
+                    <span>{{ message.name }} ({{ message.time }} {{ message.date }})</span>
+                    <span>- {{ message.body }}</span>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+        <form id="message-form" class="send__message">
+            <input type="text" name="body" id="body" placeholder="Введите сообщение"/>
+            <button id="message-button" type="button">></button>
+        </form>
+    </div>
+
+    <div class="schedule__btn">
+        <a class="show__schedule"
+           role="button"
+           href="{% url 'meeting_schedule' meeting.id %}">Посмотреть расписание
+        </a>
+    </div>
+
+    <div class="schedule">
+        {% for weekday in weekdays %}
+            <form class="weekday" method="post" action="<@spring.url '/meetings/${meeting.id}'/>">
+                <h3>{{ weekday.name }}</h3>
+                <input type="hidden" id="weekday" name="weekday" value="${weekday.name}">
+
+                {#        {% if timelinesMap(weekday.name] %}#}
+                {% if timelinesMap %}
+                    {% for start, end in timelinesMap %}
+                        <div class="timeline">
+                            <input type="time" name="start" value="${start}">
+                            <button type="button" class="delete__timeline"
+                                    data-weekday="${weekday.name}" data-start-time="${start}"
+                                    data-end-time="${end}" data-meeting="${meeting.id}">-
+                            </button>
+                            <input type="time" name="end" value="${end}">
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="timeline">
+                    <input type="time" name="start">
+                    <span>-</span>
+                    <input type="time" name="end">
+                </div>
+                <button type="submit">Сохранить</button>
+            </form>
+        {% endfor %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@6.0.0/bundles/stomp.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="<@spring.url '/js/meeting.js'/>"></script>
+
+{% endblock content %}

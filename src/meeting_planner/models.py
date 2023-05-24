@@ -29,3 +29,12 @@ class TeamToUser(models.Model):
 
 class Meeting(models.Model):
     name = CharField(max_length=50, verbose_name='Название Встречи')
+
+    team = ForeignKey(Team, on_delete=models.CASCADE, related_name='meeting_to_team', verbose_name='Команда', )
+
+
+class UserFreeTime(models.Model):
+    """Свободное время пользователя. Для составления встреч в свободное время"""
+
+    start_time = models.DateTimeField(verbose_name='Начало свободного времени')
+    end_time = models.DateTimeField(verbose_name='Конец свободного времени')

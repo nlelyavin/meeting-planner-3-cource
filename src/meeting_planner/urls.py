@@ -1,6 +1,8 @@
 from django.urls import path, include
 
-from meeting_planner.views import ProfileView, index, LoginView, RegistrationView, logout_view, TeamsView, TeamView
+from meeting_planner.views import (
+    ProfileView, index, LoginView, RegistrationView, logout_view, TeamsView, TeamView, MeetingView
+)
 
 urlpatterns = [
 
@@ -21,9 +23,10 @@ urlpatterns = [
 
     # Meetings
     path('meeting/', include([
-        path('<int:id>', index, name='meeting_by_id'),
+        path('<int:pk>', MeetingView.as_view(), name='meeting_by_id'),
         path('<int:id>/changeMeetingName', index, name='change_meeting_name'),
-        path('<int:id>/delete', index, name='meeting_delete')
+        path('<int:id>/delete', index, name='meeting_delete'),
+        path('<int:pk>/schedule', index, name='meeting_schedule'),
     ])),
 
 ]

@@ -10,3 +10,7 @@ from .views_teams import (
     TeamsView,
     TeamView,
 )
+
+from .views_meeting import (
+    MeetingView
+)
