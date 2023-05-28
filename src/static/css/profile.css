@@ -43,7 +43,7 @@
 .main .profile__card .profile__email span {
     font-size: 16px;
 }
-.main .profile__card button {
+.main .profile__card .logout {
     font-size: 18px;
     color: #fff;
     background-color: #7a2048;

@@ -25,12 +25,13 @@
         <div class="profile__email">
             <span>{{ user.email }}</span>
         </div>
-        <form action="/logout" target="_blank">
+        <form action="/logout" target="_blank" class="logout">
             <button>Выйти</button>
         </form>
         <form method="post" action="{% url 'profile' %}">
             {% csrf_token %}
-            {{ free_time_form }}
+            {{ free_time_form.as_p }}
+            <button type="submit">Добавить свободное время</button>
         </form>
     </div>
 {% endblock content %}

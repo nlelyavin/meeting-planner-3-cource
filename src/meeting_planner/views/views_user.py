@@ -2,19 +2,18 @@ import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 
 from meeting_planner.constants import weekdays
 from meeting_planner.forms import UserFreeTimeForm
-from meeting_planner.models import Meeting, Team
+from meeting_planner.models import Meeting, Team, UserFreeTime
 
 
 class ProfileView(LoginRequiredMixin, View):
     """Класс описывающий профиль юзера"""
 
     def get(self, request, *args, **kwargs) -> HttpResponse:
-
         return render(
             request=request,
             template_name='meeting_planner/profile.html',
@@ -23,6 +22,21 @@ class ProfileView(LoginRequiredMixin, View):
                 'free_time_form': UserFreeTimeForm
             },
         )
+
+    def post(self, request):
+        """Добавление свободного времени"""
+        form = UserFreeTimeForm(request.POST)
+
+        if form.is_valid():
+            start_datetime = form.cleaned_data['start_datetime']
+            end_datetime = form.cleaned_data['end_datetime']
+            UserFreeTime(
+                user=request.user,
+                start_datetime=start_datetime,
+                end_datetime=end_datetime
+            ).save()
+
+        return redirect('profile')
 
 
 class MeetingsView(LoginRequiredMixin, View):

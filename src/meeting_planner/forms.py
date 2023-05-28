@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 
-from meeting_planner.models import CustomUser, UserFreeTime
+from meeting_planner.models import CustomUser
 
 
 class LoginForm(forms.Form):
@@ -10,10 +10,15 @@ class LoginForm(forms.Form):
     password = forms.CharField(label='Пароль')
 
 
-class UserFreeTimeForm(ModelForm):
-    class Meta:
-        model = UserFreeTime
-        fields = ('start_datetime', 'end_datetime')
+class UserFreeTimeForm(forms.Form):
+    start_datetime = forms.DateTimeField(
+        label='Начало свободного времени',
+        widget=forms.DateInput(attrs={'type': 'datetime-local'})
+    )
+    end_datetime = forms.DateTimeField(
+        label='Конец свободного времени',
+        widget=forms.DateInput(attrs={'type': 'datetime-local'})
+    )
 
 
 class RegistrationForm(UserCreationForm):
