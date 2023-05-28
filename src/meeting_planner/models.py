@@ -44,5 +44,5 @@ class UserFreeTime(models.Model):
     """Свободное время пользователя. Для составления встреч в свободное время"""
     user = ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Пользователь')
 
-    start_datetime = models.DateTimeField(verbose_name='Конец встречи', null=True, blank=True)
-    end_datetime = models.DateTimeField(verbose_name='Конец встречи', null=True, blank=True)
+    start_datetime = models.DateTimeField(verbose_name='Начало свободного времени', null=True, blank=True)
+    end_datetime = models.DateTimeField(verbose_name='Конец свободного времени', null=True, blank=True)

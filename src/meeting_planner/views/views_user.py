@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.views import View
 
 from meeting_planner.constants import weekdays
+from meeting_planner.forms import UserFreeTimeForm
 from meeting_planner.models import Meeting, Team
 
 
@@ -13,7 +14,15 @@ class ProfileView(LoginRequiredMixin, View):
     """Класс описывающий профиль юзера"""
 
     def get(self, request, *args, **kwargs) -> HttpResponse:
-        return render(request=request, template_name='meeting_planner/profile.html', context={'user': request.user})
+
+        return render(
+            request=request,
+            template_name='meeting_planner/profile.html',
+            context={
+                'user': request.user,
+                'free_time_form': UserFreeTimeForm
+            },
+        )
 
 
 class MeetingsView(LoginRequiredMixin, View):

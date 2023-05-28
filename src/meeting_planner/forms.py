@@ -1,12 +1,19 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelForm
 
-from meeting_planner.models import CustomUser
+from meeting_planner.models import CustomUser, UserFreeTime
 
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Логин')
     password = forms.CharField(label='Пароль')
+
+
+class UserFreeTimeForm(ModelForm):
+    class Meta:
+        model = UserFreeTime
+        fields = ('start_datetime', 'end_datetime')
 
 
 class RegistrationForm(UserCreationForm):
