@@ -22,9 +22,10 @@
     <a href="{% url 'main' %}" class="logo">Meeting Planner</a>
 
     <nav class="nav">
-        <a href="{% url 'teams' %}">Мои команды</a>
 
         {% if user.is_authenticated %}
+            <a href="{% url 'teams' %}">Мои команды</a>
+            <a href="{% url 'user_meetings' %}">Мои встречи</a>
             <a href="{% url 'profile' %}">Профиль</a>
 
         {% else %}

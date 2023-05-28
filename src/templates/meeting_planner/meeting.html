@@ -38,23 +38,20 @@
     </div>
 
     <div class="schedule">
-        {% for weekday in weekdays %}
-            <form class="weekday" method="post" action="<@spring.url '/meetings/${meeting.id}'/>">
-                <h3>{{ weekday.name }}</h3>
-                <input type="hidden" id="weekday" name="weekday" value="${weekday.name}">
+        {% for index, weekday in weekdays.items %}
+            <form class="weekday" method="post" action="{% url 'change_meeting_name' meeting.id %}">
+                <h3>{{ weekday }}</h3>
+                <input type="hidden" id="weekday" name="weekday" value="{{ weekday }}">
 
-                {#        {% if timelinesMap(weekday.name] %}#}
-                {% if timelinesMap %}
-                    {% for start, end in timelinesMap %}
-                        <div class="timeline">
-                            <input type="time" name="start" value="${start}">
-                            <button type="button" class="delete__timeline"
-                                    data-weekday="${weekday.name}" data-start-time="${start}"
-                                    data-end-time="${end}" data-meeting="${meeting.id}">-
-                            </button>
-                            <input type="time" name="end" value="${end}">
-                        </div>
-                    {% endfor %}
+                {% if weekday == time_line.weekday %}
+                    <div class="timeline">
+                        <input type="time" name="start" value="{{ time_line.start }}">
+                        <button type="button" class="delete__timeline"
+                                data-weekday="{{ time_line.weekday }}" data-start-time="{{ time_line.start }}"
+                                data-end-time="{{ time_line.end }}" data-meeting="{{ meeting.id }}">-
+                        </button>
+                        <input type="time" name="end" value="{{ time_line.end }}">
+                    </div>
                 {% endif %}
                 <div class="timeline">
                     <input type="time" name="start">

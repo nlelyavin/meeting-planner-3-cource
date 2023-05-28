@@ -3,11 +3,12 @@ from django.urls import path, include
 from meeting_planner.views import (
     ProfileView, index, LoginView, RegistrationView, logout_view, TeamsView, TeamView, MeetingView
 )
+from meeting_planner.views.views_user import MeetingsView
 
 urlpatterns = [
 
     # Base
-    path('', ProfileView.as_view(), name="main"),
+    path('', index, name="main"),
     path('login', LoginView.as_view(), name='login'),
     path('registration', RegistrationView.as_view(), name='registration'),
     path('logout', logout_view, name='logout'),
@@ -19,7 +20,10 @@ urlpatterns = [
     ])),
 
     # Profile
-    path('profile/', ProfileView.as_view(), name='profile'),
+    path('user/', include([
+        path('', ProfileView.as_view(), name='profile'),
+        path('all-meetings', MeetingsView.as_view(), name='user_meetings'),
+    ])),
 
     # Meetings
     path('meeting/', include([

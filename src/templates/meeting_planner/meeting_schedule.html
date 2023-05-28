@@ -1,0 +1,54 @@
+{% extends 'meeting_planner/base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link href="{% static 'css/meeting.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block title %}Мои встречи{% endblock %}
+
+{% block content %}
+
+    <div class="schedule__btn">
+        {% if isAdmin %}
+            <form method="post"
+                  action="<@spring.url '/meetings/${meeting.id}/sendEmail'/>">
+                <button type="submit">Разослать расписание</button>
+            </form>
+        {% endif %}
+        <a class="show__schedule" role="button" href="<@spring.url '/meetings/${meeting.id}/'/>">Редактировать
+            расписание
+        </a>
+    </div>
+
+    <div class="schedule">
+        {% for weekday in weekdays %}
+            {% if time_lines.day not in weekdays %}
+                <div class="weekday">
+            {% else %}
+                <div class="weekday" style="background-color: rgba(105, 219, 170, 0.8)">
+            {% endif %}
+
+        <h3>{{ weekday }}</h3>
+
+        {% for meeting in meetings %}
+            {% if meeting.day == weekday %}
+                <div class="schedule__line__field">
+                    <span>{{ meeting.get_start_time }} - {{ meeting.get_end_time }}</span>
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@6.0.0/bundles/stomp.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="<@spring.url '/js/meeting.js'/>"></script>
+{% endblock %}
+
+

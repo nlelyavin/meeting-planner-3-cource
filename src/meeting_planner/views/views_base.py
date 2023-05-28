@@ -7,7 +7,7 @@ from meeting_planner.forms import LoginForm, RegistrationForm
 
 
 def index(request):
-    return render(request=request, template_name='meeting_planner/profile.html')
+    return render(request=request, template_name='meeting_planner/index.html')
 
 
 @login_required

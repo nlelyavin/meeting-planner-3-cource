@@ -2,7 +2,7 @@ from .views_base import (
     logout_view, RegistrationView, LoginView, index
 )
 
-from .views_profile import (
+from .views_user import (
     ProfileView
 )
 
