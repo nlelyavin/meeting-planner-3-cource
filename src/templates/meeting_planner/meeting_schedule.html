@@ -13,11 +13,11 @@
     <div class="schedule__btn">
         {% if isAdmin %}
             <form method="post"
-                  action="<@spring.url '/meetings/${meeting.id}/sendEmail'/>">
+                  action="{% url 'main' %}">
                 <button type="submit">Разослать расписание</button>
             </form>
         {% endif %}
-        <a class="show__schedule" role="button" href="<@spring.url '/meetings/${meeting.id}/'/>">Редактировать
+        <a class="show__schedule" role="button" href="{% url 'main' %}">Редактировать
             расписание
         </a>
     </div>
