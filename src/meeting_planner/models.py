@@ -46,3 +46,4 @@ class UserFreeTime(models.Model):
 
     start_datetime = models.DateTimeField(verbose_name='Начало свободного времени', null=True, blank=True)
     end_datetime = models.DateTimeField(verbose_name='Конец свободного времени', null=True, blank=True)
+

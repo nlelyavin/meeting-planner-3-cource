@@ -2,12 +2,18 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 
-from meeting_planner.models import CustomUser
+from meeting_planner.models import CustomUser, Meeting
 
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Логин')
-    password = forms.CharField(label='Пароль')
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput())
+
+
+class MeetingForm(forms.ModelForm):
+    class Meta:
+        model = Meeting
+        fields = ('name',)
 
 
 class UserFreeTimeForm(forms.Form):
